@@ -31,11 +31,14 @@ Route::controller(AuthController::class)->group(function () {
     Route::post("/register", "register");
 });
 
-Route::controller(ResultController::class)->group(function () {
-    Route::post("/result", "store");
-});
+Route::middleware(Auth::class)->group(function () {
+    Route::controller(ResultController::class)->group(function () {
+        Route::get("/result", "index");
+        Route::post("/result", "store");
+    });
 
-Route::controller(MessageController::class)->group(function () {
-    Route::get("/message", "index");
-    Route::post("/message", "store");
+    Route::controller(MessageController::class)->group(function () {
+        Route::get("/message", "index");
+        Route::post("/message", "store");
+    });
 });
