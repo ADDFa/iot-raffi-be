@@ -13,11 +13,11 @@ class UsersMessage extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function message()
     {
-        return $this->hasOne(Message::class);
+        return $this->belongsTo(Message::class);
     }
 }

@@ -38,12 +38,11 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credential = User::find($request->username);
-        if (!$credential || !password_verify($request->password, $credential->password)) {
+        $user = User::where("username", $request->username)->first();
+        if (!$user || !password_verify($request->password, $user->password)) {
             return Response::message("Username atau Password salah", 400);
         }
 
-        $user = User::find($credential->user_id);
         return $this->tokens($user);
     }
 

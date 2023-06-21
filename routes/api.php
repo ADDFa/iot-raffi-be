@@ -36,5 +36,6 @@ Route::controller(ResultController::class)->group(function () {
 });
 
 Route::controller(MessageController::class)->group(function () {
-    // 
+    Route::get("/message", "index");
+    Route::post("/message", "store");
 });
