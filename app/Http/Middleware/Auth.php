@@ -29,7 +29,7 @@ class Auth
 
             return $next($request);
         } catch (Exception $e) {
-            return response()->json(Response::message($e->getMessage()));
+            return response()->json(Response::message($e->getMessage()), 500);
         }
     }
 }
