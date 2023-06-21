@@ -6,6 +6,7 @@ use App\Http\Helper\Response;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ResultController extends Controller
 {
@@ -20,7 +21,10 @@ class ResultController extends Controller
             "user_id"           => "required|exists:users,id",
             "adc"               => "required|numeric",
             "glucose"           => "required|numeric",
-            "clasification"     => "required|integer"
+            "clasification"     => [
+                "required",
+                Rule::in(["Diabetes", "Normal"])
+            ]
         ]);
         if ($validator->fails()) return Response::errors($validator);
 

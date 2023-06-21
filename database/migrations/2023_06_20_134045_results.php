@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained("users");
             $table->float("adc")->unsigned();
             $table->float("glucose")->unsigned();
-            $table->integer("clasification")->unsigned();
+            $table->enum("clasification", ["Normal", "Diabetes"]);
             $table->timestamps();
         });
     }
