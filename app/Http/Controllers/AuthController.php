@@ -40,7 +40,7 @@ class AuthController extends Controller
     {
         $credential = User::find($request->username);
         if (!$credential || !password_verify($request->password, $credential->password)) {
-            return Response::message("Username atau Password salah", 404);
+            return Response::message("Username atau Password salah", 400);
         }
 
         $user = User::find($credential->user_id);
