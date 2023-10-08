@@ -16,14 +16,22 @@ class Account extends Seeder
     {
         DB::table("users")->insert([
             [
-                "name"      => "adha",
-                "username"  => "adha",
-                "password"  => password_hash("password", PASSWORD_DEFAULT)
+                "name"      => "Dokter",
+                "username"  => "doctor",
+                "password"  => password_hash("my-doctor", PASSWORD_DEFAULT),
+                "role"      => "doctor"
             ],
             [
                 "name"      => "raffi",
                 "username"  => "raffi",
-                "password"  => password_hash("password", PASSWORD_DEFAULT)
+                "password"  => password_hash("password", PASSWORD_DEFAULT),
+                "role"      => "user"
+            ],
+            [
+                "name"      => "adha",
+                "username"  => "adha",
+                "password"  => password_hash("password", PASSWORD_DEFAULT),
+                "role"      => "user"
             ]
         ]);
     }

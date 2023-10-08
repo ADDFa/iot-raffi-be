@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create("results", function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained("users");
-            $table->float("adc")->unsigned();
-            $table->float("glucose")->unsigned();
+            $table->string("adc");
+            $table->string("glucose");
             $table->enum("clasification", ["Normal", "Diabetes"]);
             $table->timestamps();
         });

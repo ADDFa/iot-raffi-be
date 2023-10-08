@@ -10,9 +10,16 @@ use Illuminate\Validation\Rule;
 
 class ResultController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Response::success(Result::with("user")->get());
+        $result = [];
+        if ($request->user->role === "doctor") {
+            $result = Result::with("user")->get();
+        } else {
+            $result = Result::where("user_id", $request->user->id)->with("user")->get();
+        }
+
+        return Response::success($result);
     }
 
     public function store(Request $request)
